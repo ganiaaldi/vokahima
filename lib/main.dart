@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-import 'FirstPage.dart';
+import 'first_page.dart';
 
 void main() {
   runApp(MyApp());
