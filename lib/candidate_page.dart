@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vokahima/model/candidate.dart';
+import 'detail_candidate.dart';
 
 var nameText = TextStyle(
     fontFamily: 'OpenSans',
@@ -27,7 +28,7 @@ class CandidatePage extends StatelessWidget {
           return InkWell(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CandidatePage();
+                return DetailCandidate(candidate: candidate);
               }));
             },
             child: SizedBox(
