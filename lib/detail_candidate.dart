@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vokahima/model/candidate.dart';
+import 'package:vokahima/vote_page.dart';
 
 var titleDetail = TextStyle(
     fontFamily: 'OpenSans',
@@ -141,8 +142,13 @@ class DetailCandidate extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(8.0),
         child: ElevatedButton(
-          onPressed: () {},
           child: Text('Pilih Kandidat Ini', style: buttonText),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context)
+                  => VotePage()
+                ));
+          },
         ),
       ),
     );
