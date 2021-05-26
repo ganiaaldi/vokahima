@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vokahima/first_page.dart';
-import 'package:vokahima/model/participant.dart';
+import 'view/mobile/mobile_participant.dart';
+import 'view/web/web_participant.dart';
 
 var nameText = TextStyle(
     fontFamily: 'OpenSans',
@@ -22,52 +22,14 @@ class ParticipantPage extends StatelessWidget {
               color: Colors.white),
         ),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          final Member member = memberList[index];
-          return InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //return DetailScreen(member: member);
-                return FirstPage();
-              }));
-            },
-            child: Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Image.asset(member.imageAsset),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            member.nameMember,
-                            style: nameText,
-                          ),
-                          SizedBox(
-                            height: 7,
-                          ),
-                          Text(member.divisionMember,
-                            style: TextStyle(
-                              decoration: TextDecoration.underline)),
-                          Text(member.positionMember),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth <= 600) {
+            return ParticipantMobile();
+          } else {
+            return ParticipantWeb(gridCount: 2);
+          }
         },
-        itemCount: memberList.length,
       ),
     );
   }

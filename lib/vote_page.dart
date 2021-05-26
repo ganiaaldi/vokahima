@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vokahima/model/candidate.dart';
 import 'package:vokahima/participant_page.dart';
 
 import 'model/participant.dart';
